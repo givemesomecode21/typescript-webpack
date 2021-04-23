@@ -3,7 +3,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import { Product } from './product';
 import { Order } from './order';
 import { Dashboard } from './dashboard';
-import { AdminLayout } from '../../layouts';
+import { AdminLayout } from '@/layouts';
 import { MasterData } from './masterData';
 
 const Admin = (props) => {

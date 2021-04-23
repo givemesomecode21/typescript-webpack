@@ -1,5 +1,5 @@
-import { fetchWrapper } from '../helpers';
-import { API_URL } from '../constants';
+import { fetchWrapper } from '@/helpers';
+import { API_URL } from '@/constants';
 
 export class BaseService {
   baseUrl!: string;

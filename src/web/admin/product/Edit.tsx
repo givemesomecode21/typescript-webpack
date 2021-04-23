@@ -1,8 +1,8 @@
 import { PlusOutlined } from '@ant-design/icons';
 import { Button, Card, Col, Form, Input, InputNumber, message, Modal, Row, Select, Upload } from 'antd';
-import { FileHelper } from '../../../helpers';
+import { FileHelper } from '@/helpers';
 import React, { useEffect, useMemo, useState } from 'react';
-import { brandService, categoryService, productService } from '../../../services';
+import { brandService, categoryService, productService } from '@/services';
 const validateMessages = {
   required: '${label} is required!',
 };

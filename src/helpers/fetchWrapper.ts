@@ -1,6 +1,6 @@
-import { User } from 'models';
-import { API_URL } from '../constants';
-import { userService } from '../services';
+import { User } from '@/models';
+import { API_URL } from '@/constants';
+import { userService } from '@/services';
 
 class FetchWrapper {
 

@@ -1,6 +1,6 @@
 import { Button, Card, Col, Form, Input, message, Row } from 'antd';
 import React, { useEffect } from 'react';
-import { brandService } from '../../../../services';
+import { brandService } from '@/services';
 
 const validateMessages = {
   required: '${label} is required!',

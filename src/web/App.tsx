@@ -4,7 +4,7 @@ import 'antd/dist/antd.css';
 import './App.scss';
 import { Login } from "./account/login";
 import { Home } from "./home";
-import { PrivateRoute } from "./../components";
+import { PrivateRoute } from "@/components";
 import { Admin } from "./admin";
 import { Register } from "./account/register";
 

@@ -11,7 +11,7 @@ import {
 import { NavLink, useHistory } from 'react-router-dom';
 import SubMenu from 'antd/lib/menu/SubMenu';
 import { Footer } from 'antd/lib/layout/layout';
-import { userService } from './../services';
+import { userService } from '@/services';
 const { Header, Sider, Content } = Layout;
 
 const AdminLayout = ({ children, match }) => {

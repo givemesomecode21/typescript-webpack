@@ -1,7 +1,7 @@
 import { User } from 'models';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { API_URL } from '../constants';
-import { fetchWrapper } from '../helpers';
+import { API_URL } from '@/constants';
+import { fetchWrapper } from '@/helpers';
 
 export class UserService {
 

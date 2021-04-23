@@ -1,6 +1,6 @@
 import React from "react";
 import { Form, Button, Input, Row, Col, Checkbox, Card } from "antd";
-import { userService } from "./../../../services";
+import { userService } from "@/services";
 
 const validateMessages = {
   required: '${label} is required!',

@@ -1,11 +1,11 @@
 import { Button, message, Popconfirm, Space, Table } from 'antd';
-import { Pagination, PaginationResult } from 'models';
+import { Pagination, PaginationResult } from '@/models';
 import React, { useState, useEffect } from 'react';
 import { format } from 'date-fns';
-import { productService } from './../../../services';
+import { productService } from '@/services';
 import { DeleteOutlined, FormOutlined, QuestionCircleOutlined } from '@ant-design/icons';
 import { Edit } from './Edit';
-import { AnimationHelper } from '../../../helpers';
+import { AnimationHelper } from '@/helpers';
 
 const page: Pagination = { pageSize: 10, pageNumber: 1 };
 

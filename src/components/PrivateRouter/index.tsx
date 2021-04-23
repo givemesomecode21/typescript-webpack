@@ -1,7 +1,7 @@
-import { User } from 'models';
+import { User } from '@/models';
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { userService } from '../../services/index';
+import { userService } from '@/services';
 
 const PrivateRoute = ({ component: Component, roles, ...rest }) => {
   return (
