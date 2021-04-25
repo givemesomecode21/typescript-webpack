@@ -1,12 +1,10 @@
-import { fetchWrapper } from '@/helpers';
-import { API_URL } from '@/constants';
+import { fetchWrapper } from "@/helpers";
+import { API_URL } from "@/constants";
 
 export class BaseService {
-  baseUrl!: string;
+  protected baseUrl: string;
 
-  constructor(
-    public url: string
-  ) {
+  constructor(public url: string) {
     this.baseUrl = `${API_URL}/${url}`;
   }
 

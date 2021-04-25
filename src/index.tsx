@@ -5,6 +5,7 @@ import configureStore from "./store";
 import { App } from "./web/App";
 import { userService } from "@/services";
 import { BrowserRouter, } from 'react-router-dom';
+import './styles/styles.scss';
 
 const store = configureStore();
 

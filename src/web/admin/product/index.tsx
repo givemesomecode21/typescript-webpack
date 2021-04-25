@@ -1,11 +1,15 @@
-import { Button, message, Popconfirm, Space, Table } from 'antd';
-import { Pagination, PaginationResult } from '@/models';
-import React, { useState, useEffect } from 'react';
-import { format } from 'date-fns';
-import { productService } from '@/services';
-import { DeleteOutlined, FormOutlined, QuestionCircleOutlined } from '@ant-design/icons';
-import { Edit } from './Edit';
-import { AnimationHelper } from '@/helpers';
+import { Button, message, Popconfirm, Space, Table } from "antd";
+import { Pagination, PaginationResult } from "@/models";
+import React, { useState, useEffect } from "react";
+import { format } from "date-fns";
+import { productService } from "@/services";
+import {
+  DeleteOutlined,
+  FormOutlined,
+  QuestionCircleOutlined,
+} from "@ant-design/icons";
+import { Edit } from "./Edit";
+import { AnimationHelper } from "@/helpers";
 
 const page: Pagination = { pageSize: 10, pageNumber: 1 };
 
@@ -14,7 +18,7 @@ const Product = () => {
   const [product, setProduct] = useState<any | null>(null);
 
   useEffect(() => {
-    productService.search(page).then(x => setProducts(x));
+    productService.search(page).then((x) => setProducts(x));
   }, []);
 
   function onEditHandler(item: any) {
@@ -23,66 +27,65 @@ const Product = () => {
   }
 
   function onDeleteHandler(id: string) {
-    productService.delete(id)
-      .then(res => {
-        if (res) {
-          message.success('Deleted successfully');
-          productService.search(page).then(x => setProducts(x));
-        }
-      })
+    productService.delete(id).then((res) => {
+      if (res) {
+        message.success("Deleted successfully");
+        productService.search(page).then((x) => setProducts(x));
+      }
+    });
   }
 
   const columns = [
     {
-      title: 'Name',
-      dataIndex: 'name',
-      key: 'name',
-      sorter: true
+      title: "Name",
+      dataIndex: "name",
+      key: "name",
+      sorter: true,
     },
     {
-      title: 'Price',
-      dataIndex: 'price',
-      key: 'price',
-      sorter: true
+      title: "Price",
+      dataIndex: "price",
+      key: "price",
+      sorter: true,
     },
     {
-      title: 'Category',
-      dataIndex: 'categoryName',
-      key: 'categoryName',
-      sorter: true
+      title: "Category",
+      dataIndex: "categoryName",
+      key: "categoryName",
+      sorter: true,
     },
     {
-      title: 'Brand',
-      dataIndex: 'brandName',
-      key: 'brandName',
-      sorter: true
+      title: "Brand",
+      dataIndex: "brandName",
+      key: "brandName",
+      sorter: true,
     },
     {
-      title: 'Updated At',
-      dataIndex: 'updatedAt',
-      key: 'updatedAt',
-      render: (item) => format(new Date(item), 'MM/dd/yyyy'),
-      sorter: true
+      title: "Updated At",
+      dataIndex: "updatedAt",
+      key: "updatedAt",
+      render: (item) => format(new Date(item), "MM/dd/yyyy"),
+      sorter: true,
     },
     {
-      title: 'Updated By',
-      dataIndex: 'updatedBy',
-      key: 'updatedBy',
-      sorter: true
+      title: "Updated By",
+      dataIndex: "updatedBy",
+      key: "updatedBy",
+      sorter: true,
     },
     {
-      title: 'Action',
-      dataIndex: '',
-      key: '',
+      title: "Action",
+      dataIndex: "",
+      key: "",
       render: (text, record) => (
         <Space size="small">
           <FormOutlined onClick={() => onEditHandler(record)} />
           <Popconfirm
             title="Are you sure delete this item?"
             onConfirm={() => onDeleteHandler(record.id)}
-            icon={<QuestionCircleOutlined style={{ color: 'red' }} />}
+            icon={<QuestionCircleOutlined style={{ color: "red" }} />}
           >
-            <DeleteOutlined twoToneColor="#52c41a" />
+            <DeleteOutlined style={{ color: "#ff4d4f" }} />
           </Popconfirm>
         </Space>
       ),
@@ -95,8 +98,8 @@ const Product = () => {
       pageNumber: pagination.current,
       orderBy: sorter.field,
       orderDirection: sorter.order,
-    }
-    productService.search(dataFilter).then(x => setProducts(x));
+    };
+    productService.search(dataFilter).then((x) => setProducts(x));
   }
 
   function addNewHandler() {
@@ -105,18 +108,39 @@ const Product = () => {
   }
 
   function onSaveHandler() {
-    productService.search(page).then(x => setProducts(x));
+    productService.search(page).then((x) => setProducts(x));
     setProduct(null);
   }
 
   return (
     <>
-      <Button type="primary" onClick={addNewHandler} style={{ marginBottom: "10px", float: "right" }}>Add new</Button>
-      <Table pagination={{ pageSize: products?.pageSize, total: products?.totalCount, showSizeChanger: true }} dataSource={products?.items} columns={columns} onChange={onChange} />
+      <Button
+        type="primary"
+        onClick={addNewHandler}
+        style={{ marginBottom: "10px", float: "right" }}
+      >
+        Add new
+      </Button>
+      <Table
+        pagination={{
+          pageSize: products?.pageSize,
+          total: products?.totalCount,
+          showSizeChanger: true,
+        }}
+        dataSource={products?.items}
+        columns={columns}
+        onChange={onChange}
+      />
       <div id="productId">
-        {product && <Edit onSaveHandler={onSaveHandler} onCancelHandler={() => setProduct(null)} selectedItem={product} />}
+        {product && (
+          <Edit
+            onSaveHandler={onSaveHandler}
+            onCancelHandler={() => setProduct(null)}
+            selectedItem={product}
+          />
+        )}
       </div>
     </>
-  )
-}
-export { Product }
+  );
+};
+export { Product };

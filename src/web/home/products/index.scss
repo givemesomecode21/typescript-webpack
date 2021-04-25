@@ -1,0 +1,22 @@
+.product-box {
+    margin: 5px 0px;
+  .product-name {
+    color: #333;
+    font-weight: bold;
+  }
+  .product-price {
+    color: #ff4d4f;
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  .product-img {
+    margin: 10px;
+    height: 180px;
+    align-items: center;
+    display: flex;
+    img {
+      width: 100%;
+    }
+  }
+}
