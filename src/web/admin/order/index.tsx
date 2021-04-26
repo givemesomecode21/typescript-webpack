@@ -57,6 +57,12 @@ const Order = () => {
 
   const columns = [
     {
+      title: "Phone",
+      dataIndex: "phoneNumber",
+      key: "phoneNumber",
+      sorter: true,
+    },
+    {
       title: "Inserted By",
       dataIndex: "insertedBy",
       key: "insertedBy",
@@ -153,7 +159,7 @@ const Order = () => {
       render: (text, record: any) => (
         <Space size="small">
           <Tooltip title="Click to view details">
-            <EyeOutlined onClick={() => showModal(record)} />
+            <EyeOutlined style={{ color: "#1890ff" }} onClick={() => showModal(record)} />
           </Tooltip>
           <Popconfirm
             title="Are you sure delete this item?"

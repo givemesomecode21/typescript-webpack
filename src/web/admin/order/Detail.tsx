@@ -78,7 +78,7 @@ const Detail = ({ item, isShow, closeModalHandler }) => {
         />
         <div style={{ marginTop: 20, textAlign: "right" }}>
           <p>
-            <b>Item price</b>:{" "}
+            <b>Subtotal</b>:{" "}
             <NumberFormat
               displayType="text"
               value={item?.itemPrice}
@@ -96,7 +96,7 @@ const Detail = ({ item, isShow, closeModalHandler }) => {
             />
           </p>
           <p>
-            <b>Shipping price</b>:{" "}
+            <b>Shipping fee</b>:{" "}
             <NumberFormat
               displayType="text"
               value={item?.shippingPrice}

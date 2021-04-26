@@ -23,8 +23,8 @@ const Register = ({ history, location }) => {
 
   return (
     <Row style={{ height: "100vh", background: "#eee" }}>
-      <Col span={12} offset={6}>
-        <Card title="REGISTER" style={{ marginTop: "100px" }}>
+      <Col span={8} offset={8}>
+        <Card title="REGISTER" style={{ marginTop: "50px" }}>
           <Form
             layout="vertical"
             name="basic"
@@ -32,9 +32,6 @@ const Register = ({ history, location }) => {
             onFinish={onFinish}
             validateMessages={validateMessages}
           >
-            <Form.Item label="Title" name="title" rules={[{ required: true }]}>
-              <Input />
-            </Form.Item>
             <Form.Item
               label="First name"
               name="firstName"
@@ -66,18 +63,28 @@ const Register = ({ history, location }) => {
             <Form.Item
               label="Confirm Password"
               name="confirmPassword"
-              rules={[{ required: true }]}
+              dependencies={['password']}
+              hasFeedback
+              rules={[
+                {
+                  required: true,
+                  message: 'Please confirm your password!',
+                },
+                ({ getFieldValue }) => ({
+                  validator(_, value) {
+                    if (!value || getFieldValue('password') === value) {
+                      return Promise.resolve();
+                    }
+                    return Promise.reject(new Error('The two passwords that you entered do not match!'));
+                  },
+                }),
+              ]}
             >
               <Input.Password />
             </Form.Item>
-
-            <Form.Item name="acceptTerms" valuePropName="checked">
-              <Checkbox>Accept Terms</Checkbox>
-            </Form.Item>
-
             <Form.Item>
               <Button type="primary" block htmlType="submit">
-                Login
+                Register
               </Button>
             </Form.Item>
           </Form>

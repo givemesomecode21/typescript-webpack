@@ -79,7 +79,7 @@ const Product = () => {
       key: "",
       render: (text, record) => (
         <Space size="small">
-          <FormOutlined onClick={() => onEditHandler(record)} />
+          <FormOutlined style={{ color: "#1890ff" }} onClick={() => onEditHandler(record)} />
           <Popconfirm
             title="Are you sure delete this item?"
             onConfirm={() => onDeleteHandler(record.id)}

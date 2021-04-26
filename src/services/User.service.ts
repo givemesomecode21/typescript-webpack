@@ -22,7 +22,6 @@ export class UserService {
   login(email, password) {
     return fetchWrapper.post(`${this.baseUrl}/authenticate`, { email, password })
       .then(user => {
-        // publish user to subscribers and start timer to refresh token
         this.userSubject.next(user);
         this.startRefreshTokenTimer();
         return user;
@@ -30,7 +29,6 @@ export class UserService {
   }
 
   logout() {
-    // revoke token, stop refresh timer, publish null to user subscribers and redirect to login page
     fetchWrapper.post(`${this.baseUrl}/revoke-token`, {});
     this.stopRefreshTokenTimer();
     this.userSubject.next(null);
@@ -75,6 +73,10 @@ export class UserService {
     return fetchWrapper.get(`${this.baseUrl}/${id}`);
   }
 
+  search(params) {
+    return fetchWrapper.post(`${this.baseUrl}/search`, params);
+  }
+
   create(params) {
     return fetchWrapper.post(this.baseUrl, params);
   }
@@ -93,7 +95,7 @@ export class UserService {
   }
 
   // prefixed with underscore because 'delete' is a reserved word in javascript
-  _delete(id) {
+  delete(id) {
     return fetchWrapper.delete(`${this.baseUrl}/${id}`)
       .then(x => {
         // auto logout if the logged in user deleted their own record

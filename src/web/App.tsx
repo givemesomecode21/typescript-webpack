@@ -12,24 +12,16 @@ import { Home } from "./home";
 import { PrivateRoute } from "@/components";
 import { Admin } from "./admin";
 import { Register } from "./account/register";
-import { hubService, userService } from "@/services";
+import { hubService } from "@/services";
 import { API_URL } from "@/constants";
-import { notification } from "antd";
 
 const App = () => {
-  const [user, setUser] = useState({});
   const [connection, setConnection] = useState<HubConnection | null>(null);
-
-  useEffect(() => {
-    const subscription = userService.user.subscribe((x) => setUser(x));
-    return subscription.unsubscribe();
-  }, []);
-
   useEffect(() => {
     const connect = new HubConnectionBuilder()
       .withUrl(`${API_URL}/realtime`)
       .withAutomaticReconnect()
-      .configureLogging(LogLevel.Information)
+      .configureLogging(LogLevel.None)
       .build();
 
     setConnection(connect);

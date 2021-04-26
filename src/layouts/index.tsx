@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Badge, Breadcrumb, Dropdown, Layout, Menu, notification } from "antd";
+import { Badge, Breadcrumb, Col, Dropdown, Layout, Menu, notification, Row } from "antd";
 import {
   UserOutlined,
   PieChartOutlined,
@@ -128,9 +128,6 @@ const AdminLayout = ({ children, match, location }) => {
             </div>
           </Header>
           <Content style={{ margin: "16px" }}>{children}</Content>
-          <Footer style={{ textAlign: "center" }}>
-            ©2018 Created by Ant UED
-          </Footer>
         </Layout>
       </Layout>
     </div>

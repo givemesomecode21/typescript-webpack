@@ -24,8 +24,7 @@ const Shipping = ({ history, location }) => {
       form.setFieldsValue({
         address: shippingAddress.address,
         city: shippingAddress.city,
-        country: shippingAddress.country,
-        postalCode: shippingAddress.postalCode,
+        phoneNumber: shippingAddress.phoneNumber,
       });
     }
   }, [shippingAddress, form]);
@@ -56,7 +55,16 @@ const Shipping = ({ history, location }) => {
           >
             <Col offset={3} span={18}>
               <Form.Item
-                label="Address"
+                label="Phone number"
+                name="phoneNumber"
+                rules={[{ required: true }]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col offset={3} span={18}>
+              <Form.Item
+                label="Detailed Address"
                 name="address"
                 rules={[{ required: true }]}
               >
@@ -65,24 +73,6 @@ const Shipping = ({ history, location }) => {
             </Col>
             <Col offset={3} span={18}>
               <Form.Item label="City" name="city" rules={[{ required: true }]}>
-                <Input />
-              </Form.Item>
-            </Col>
-            <Col offset={3} span={18}>
-              <Form.Item
-                label="Country"
-                name="country"
-                rules={[{ required: true }]}
-              >
-                <Input />
-              </Form.Item>
-            </Col>
-            <Col offset={3} span={18}>
-              <Form.Item
-                label="Postal Code"
-                name="postalCode"
-                rules={[{ required: true }]}
-              >
                 <Input />
               </Form.Item>
             </Col>

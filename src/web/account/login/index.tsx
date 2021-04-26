@@ -33,7 +33,6 @@ const Login = ({ history, location }) => {
           <Form
             layout="vertical"
             name="basic"
-            initialValues={{ remember: true }}
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
             validateMessages={validateMessages}
@@ -53,11 +52,7 @@ const Login = ({ history, location }) => {
             >
               <Input.Password />
             </Form.Item>
-
-            <Form.Item name="remember" valuePropName="checked">
-              <Checkbox>Remember me</Checkbox>
-            </Form.Item>
-
+            <Button type="link">Register</Button>
             <Form.Item>
               <Button type="primary" block htmlType="submit">
                 Login

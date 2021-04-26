@@ -3,7 +3,7 @@ import { Pagination, PaginationResult } from '@/models';
 import React, { useState, useEffect } from 'react';
 import { format } from 'date-fns';
 import { brandService } from '@/services';
-import { QuestionCircleOutlined } from '@ant-design/icons';
+import { DeleteOutlined, FormOutlined, QuestionCircleOutlined } from '@ant-design/icons';
 import { Edit } from './Edit';
 import { AnimationHelper } from '@/helpers';
 
@@ -64,13 +64,13 @@ const Brand = () => {
       key: '',
       render: (text, record) => (
         <Space size="small">
-          <a onClick={() => onEditHandler(record)} >Edit</a>
+          <FormOutlined style={{ color: "#1890ff" }} onClick={() => onEditHandler(record)} />
           <Popconfirm
             title="Are you sure delete this item?"
             onConfirm={() => onDeleteHandler(record.id)}
             icon={<QuestionCircleOutlined style={{ color: 'red' }} />}
           >
-            <a href="#">Delete</a>
+            <DeleteOutlined style={{ color: "#ff4d4f" }} />
           </Popconfirm>
         </Space>
       ),

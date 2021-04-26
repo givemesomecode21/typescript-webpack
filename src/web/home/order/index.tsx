@@ -102,12 +102,13 @@ const Order = ({ history }) => {
       shippingPrice: +priceObject.shippingPrice,
       taxPrice: +priceObject.taxPrice,
       totalPrice: +priceObject.totalPrice,
-      shippingAddress: cart.shippingAddress.address,
-      paymentMethodId: cart.paymentMethod.payment,
+      shippingAddress: shippingAddress.address,
+      paymentMethodId: paymentMethod.payment,
+      phoneNumber: shippingAddress.phoneNumber
     };
     orderService.create(param).then((res) => {
       if (res) {
-        message.success("Your order has been added successfully!");
+        message.success("Place order successfully!");
         dispatch(clearCartItems());
         history.push("/");
       }
@@ -137,21 +138,20 @@ const Order = ({ history }) => {
         <Col span={6}>
           <Card>
             <p>
-              <b>Name</b>: {user?.firstName + " " + user?.lastName}
+              <b>Name</b>: {user.displayName ? user.displayName : user?.firstName + " " + user?.lastName}
             </p>
             <p>
-              <b>Email</b>: {user?.email}
+              <b>Phone number</b>: {shippingAddress?.phoneNumber}
             </p>
             <p>
               <b>Address</b>:{" "}
               {shippingAddress?.address +
                 " " +
-                shippingAddress?.city +
-                " " +
-                shippingAddress?.country}
+                shippingAddress?.city
+              }
             </p>
             <p>
-              <b>Item price</b>:{" "}
+              <b>Subtotal</b>:{" "}
               <NumberFormat
                 displayType="text"
                 value={priceObject?.itemPrice}
@@ -169,7 +169,7 @@ const Order = ({ history }) => {
               />
             </p>
             <p>
-              <b>Shipping price</b>:{" "}
+              <b>Shipping fee</b>:{" "}
               <NumberFormat
                 displayType="text"
                 value={priceObject?.shippingPrice}
